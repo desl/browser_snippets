@@ -1,0 +1,12 @@
+var selector = '#asana_main_page > div.AsanaPageTopbar.AsanaPageTopbar-withoutShadow > div.TopbarPageHeaderGlobalActions.AsanaPageTopbar-globalActions > div.AbstractThemeableRectangularButton--isEnabled.AbstractThemeableRectangularButton.AbstractThemeableRectangularButton--large.BusinessUpgradeButton.TopbarContingentUpgradeButton-link.TopbarPageHeaderGlobalActions-upgradeButton'
+var element = document.querySelector(selector);
+
+var currentStyle = element.style.display;
+
+if (element.style.display === ''){
+    element.style.display = 'none';
+}else if (element.style.display === 'block'){
+    element.style.display = 'none';
+}else if (element.style.display === 'none'){
+    element.style.display = 'block';
+}

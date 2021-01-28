@@ -1,0 +1,50 @@
+var randomProperty = function (obj) {
+    var keys = Object.keys(obj)
+    return obj[keys[ keys.length * Math.random() << 0]];
+};
+
+var creatures = {
+    CelebrationNarwhal: "https://d3ki9tyy5l5ruj.cloudfront.net/obj/2e943151179283bf6ff0749f01ca21200ad7106b/Narwhal.svg",
+    CelebrationPhoenix: "https://d3ki9tyy5l5ruj.cloudfront.net/obj/79e4b68d86f480213c4e2ff14cc4de4ec2bfc5c3/Phoenix.svg",
+    CelebrationUnicorn: "https://d3ki9tyy5l5ruj.cloudfront.net/obj/d83157997a4e3e51fc95b13f4a9a6b913231b4b3/Unicorn.svg",
+    CelebrationYeti: "https://d3ki9tyy5l5ruj.cloudfront.net/obj/4d99b91e098681b9cef876f13d09316e25242297/Yeti.svg",
+    CelebrationPrideNarwhal: "https://d3ki9tyy5l5ruj.cloudfront.net/obj/8059be9f1e7c043bac8729c1305591e960775a33/pride_narwhal.svg",
+    CelebrationPridePhoenix: "https://d3ki9tyy5l5ruj.cloudfront.net/obj/420be29826beddb022551d816342452c45a68c18/pride_phoenix.svg",
+    CelebrationPrideUnicorn: "https://d3ki9tyy5l5ruj.cloudfront.net/obj/7a98e9b049c805af72c727e7bd166e28ebb96ec4/pride_unicorn.svg",
+    CelebrationPrideYeti: "https://d3ki9tyy5l5ruj.cloudfront.net/obj/8fe73fb79cbaf023bf8dd6f96ca17a2d3148443d/pride_yeti.svg",
+}
+
+var imageCreature = document.createElement("img");
+imageCreature.src = randomProperty(creatures);
+imageCreature.setAttribute("style", 'margin-left: -50%; width: 600px; height: 300px; position: absolute; display: none');
+
+document.body.appendChild(imageCreature);
+
+function myMove(elem) {
+    var elem = imageCreature
+    elem.style.display = "" ;
+    var pos = 0;
+    var pos = 0;
+    var id = setInterval(frame, 4);
+    function frame() {
+        if (pos == 601) { // default is 350
+            clearInterval(id);
+            elem.style.display = "none";
+            elem.src = randomProperty(creatures);
+        } else {
+            pos++; 
+            elem.style.top = pos + 'px'; 
+            elem.style.left = pos + 'px'; 
+        }
+    }
+}
+
+document.addEventListener('keydown', celebrateWithCreature);
+
+function celebrateWithCreature(e) {
+    // console.log(e)
+    if( e.metaKey && e.code === "Quote"){   
+        console.log("run the animation!");
+        myMove(imageCreature);
+    }
+}
